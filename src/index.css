@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  overflow-x: hidden;
+  
+}
+canvas{
+    pointer-events: none;
+}
+#rotate {
+    position: absolute;
+    width: min(40vw, 400px); /* Responsive with max size */
+    height: min(40vw, 400px); /* Equal to width for circle */
+    top: 30%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    animation: rotateText 20s linear infinite;
+}
+span.growing{
+    background-color: #FD2C2A;
+    z-index: 1;
+}
+
+@keyframes rotateText {
+    0% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+@font-face {
+    font-family: 'king';
+    src: url('/PPNeueMontreal-Medium.431960c2.ttf');
+}
+
+#rotate span {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    font-size: clamp(0.5rem, 1.5vw, 0.8rem); /* Responsive font size */
+    transform-origin: 0 calc(min(10vw, 100px)); /* Half of container width */
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    font-family: 'king';
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    #rotate {
+        width: 60vw;
+        height: 60vw;
+    }
+    
+    #rotate span {
+        transform-origin: 0 30vw; /* Half of container width */
+    }
+}
+#text{
+    font-weight: 100;
+    font-family: 'king';
+}
